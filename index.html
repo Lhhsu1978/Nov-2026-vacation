@@ -1,0 +1,2443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taiwan · November 2026 — A Family Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS ───────────────────────────────────────────── */
+    :root {
+      --cream:         #FAF6EF;
+      --cream-warm:    #F5EDE0;
+      --cream-dark:    #EDE0CE;
+      --ivory:         #FFFDF8;
+      --terra:         #C1613A;
+      --terra-mid:     #D4845F;
+      --terra-light:   #E8A882;
+      --terra-pale:    #F2CEBB;
+      --terra-wash:    #FAF0EB;
+      --rust:          #A84830;
+      --green:         #2E5346;
+      --green-mid:     #3D6B59;
+      --green-light:   #5A8A78;
+      --green-pale:    #C8D9D1;
+      --green-wash:    #EEF4F1;
+      --gold:          #B8860B;
+      --gold-mid:      #C9973E;
+      --gold-light:    #D4A017;
+      --gold-pale:     #F5E6C0;
+      --gold-wash:     #FDF6E3;
+      --brown-deep:    #2C1F15;
+      --brown:         #4A3728;
+      --text:          #2C1F15;
+      --text-mid:      #5C4033;
+      --text-soft:     #8B6B55;
+      --text-muted:    #B0967A;
+      --text-faint:    #C8B09A;
+      --white:         #FFFFFF;
+      --border:        #E8DACE;
+      --border-light:  #F0E8DC;
+      --shadow-sm:     0 1px 4px rgba(44,31,21,0.07), 0 2px 8px rgba(44,31,21,0.05);
+      --shadow:        0 2px 8px rgba(44,31,21,0.08), 0 6px 24px rgba(44,31,21,0.08);
+      --shadow-lg:     0 4px 16px rgba(44,31,21,0.1), 0 12px 40px rgba(44,31,21,0.1);
+      --radius-sm:     8px;
+      --radius:        14px;
+      --radius-lg:     22px;
+      --radius-xl:     32px;
+    }
+
+    /* ── RESET ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TYPOGRAPHY HELPERS ──────────────────────────────────────── */
+    .serif { font-family: 'Playfair Display', serif; }
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .eyebrow::after {
+      content: '';
+      height: 1px;
+      width: 36px;
+      background: var(--terra-pale);
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--brown-deep);
+      line-height: 1.15;
+      margin-bottom: 0.3rem;
+    }
+    .section-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-soft);
+    }
+
+    /* ── TRAVELLER BAR ──────────────────────────────────────────── */
+    .traveller-bar {
+      position: sticky;
+      top: 58px;
+      z-index: 90;
+      background: var(--cream-warm);
+      border-bottom: 1px solid var(--border);
+    }
+    .traveller-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .traveller-bar-label { display: none; }
+    .t-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.65rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-soft);
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      transition: all 0.16s;
+      white-space: nowrap;
+      user-select: none;
+      font-family: 'Inter', sans-serif;
+      min-height: 44px;
+    }
+    .t-tab:active { transform: scale(0.97); }
+    .t-tab.active { background: var(--terra); color: white; border-color: var(--terra); }
+    .t-tab .t-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .t-tab.active .t-dot { background: rgba(255,255,255,0.65) !important; }
+    .t-sep { display: none; }
+    /* Hide the old type dropdown entirely */
+    .t-type-wrap { display: none; }
+
+    /* Type filter dropdown */
+    .t-type-wrap { position: relative; flex-shrink: 0; }
+    .t-type-btn .t-arrow { font-size: 0.55rem; margin-left: 0.2rem; opacity: 0.7; }
+    .t-type-menu {
+      position: fixed;
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      z-index: 9999;
+      min-width: 170px;
+      overflow: hidden;
+      display: none;
+    }
+    .t-type-menu.open { display: block; }
+    .t-type-menu button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.52rem 1rem;
+      font-size: 0.77rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-light);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    .t-type-menu button:last-child { border-bottom: none; }
+    .t-type-menu button:hover { background: var(--cream-warm); color: var(--text-mid); }
+    .t-type-menu button.active { color: var(--terra); font-weight: 600; background: var(--terra-wash); }
+    /* Coming-soon message that replaces cards for unconfirmed travellers */
+    .booking-coming-soon {
+      grid-column: 1 / -1;
+      padding: 3rem 2rem;
+      text-align: center;
+      background: var(--ivory);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+      display: none;
+    }
+    .booking-coming-soon p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--text-faint);
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+    .booking-coming-soon small { font-size: 0.75rem; color: var(--text-faint); }
+
+    /* ── NAV ─────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,246,239,0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--brown-deep);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-links { display: flex; gap: 0.2rem; }
+    .nav-links a {
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      text-decoration: none;
+      padding: 0.38rem 0.85rem;
+      border-radius: 20px;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { background: var(--terra-pale); color: var(--rust); }
+
+    /* ── HERO ────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background: var(--green);
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 5rem 2rem 7rem;
+    }
+
+    /* Radial glow layers */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 18% 28%, rgba(193,97,58,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 70% at 82% 72%, rgba(184,134,11,0.22) 0%, transparent 62%),
+        radial-gradient(ellipse 90% 40% at 50% 100%, rgba(0,0,0,0.28) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    /* Lantern orbs */
+    .hero-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.13;
+    }
+    .orb-1 { width: 340px; height: 340px; background: var(--gold-light); top: -90px; right: -70px; }
+    .orb-2 { width: 220px; height: 220px; background: var(--terra); bottom: 8%; left: 4%; }
+    .orb-3 { width: 150px; height: 150px; background: var(--gold); top: 28%; left: 12%; }
+    .orb-4 { width: 90px;  height: 90px;  background: var(--terra-light); top: 18%; right: 22%; }
+    .orb-5 { width: 60px;  height: 60px;  background: var(--gold-light); bottom: 22%; right: 8%; }
+
+    /* Mountain silhouette */
+    .hero-mountain {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 48%;
+      pointer-events: none;
+    }
+    .hero-mountain svg { width: 100%; height: 100%; display: block; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--cream);
+      max-width: 780px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-mid);
+      margin-bottom: 1.75rem;
+    }
+    .hero-title-zh {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold-pale);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 0.95;
+      display: block;
+      margin-bottom: 1.1rem;
+    }
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.8vw, 1.55rem);
+      font-style: italic;
+      color: rgba(250,246,239,0.75);
+      margin-bottom: 0.5rem;
+    }
+    .hero-dates {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      color: var(--gold-pale);
+      margin-top: 1.75rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 40px;
+      padding: 0.6rem 1.6rem;
+      backdrop-filter: blur(6px);
+    }
+    .hero-dates-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold-mid); opacity: 0.7; }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(250,246,239,0.4);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: gentle-float 2.2s ease-in-out infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, rgba(250,246,239,0.4), transparent);
+    }
+    @keyframes gentle-float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ── SECTION WRAPPERS ────────────────────────────────────────── */
+    .outer-section { padding: 5.5rem 2rem; }
+    .outer-section.alt { background: var(--cream-warm); }
+    .outer-section.deep { background: var(--green); padding: 5.5rem 2rem; }
+    .inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-header { margin-bottom: 3rem; }
+
+    /* Warm ornamental divider */
+    .ornament {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--terra-pale);
+      margin: 2.5rem 0;
+      position: relative;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 30%;
+      height: 1px;
+      background: var(--border);
+    }
+    .ornament::before { left: 0; }
+    .ornament::after  { right: 0; }
+
+    /* ════════════════════════════════════════════════════════════════
+       SECTION 1 — TRIP INFO
+    ════════════════════════════════════════════════════════════════ */
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .booking-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .booking-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+    /* Coloured top stripe per traveller */
+    .booking-card.t1::before,
+    .booking-card.t2::before,
+    .booking-card.hotel::before,
+    .booking-card.add::before {
+      content: '';
+      display: block;
+      height: 4px;
+    }
+    .booking-card.t1::before    { background: linear-gradient(90deg, var(--terra), var(--gold-mid)); }
+    .booking-card.t2::before    { background: linear-gradient(90deg, var(--green), var(--green-mid)); }
+    .booking-card.t3::before    { background: linear-gradient(90deg, #3B6EA5, #5A8FC4); }
+    .booking-card.t4::before    { background: linear-gradient(90deg, #6B4580, #8C5FA3); }
+    .booking-card.hotel::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .booking-card.add::before   { background: var(--border); }
+
+    .booking-card-inner { padding: 1.7rem; }
+
+    .booking-card.add {
+      border-style: dashed;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 200px;
+    }
+    .booking-card.add .add-inner { color: var(--text-faint); }
+    .booking-card.add .add-plus { font-size: 1.8rem; margin-bottom: 0.4rem; opacity: 0.5; }
+    .booking-card.add p { font-size: 0.82rem; line-height: 1.5; }
+
+    .booking-type-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+    .booking-type-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+    .traveller-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.22rem 0.65rem;
+      font-size: 0.71rem;
+      font-weight: 500;
+      color: var(--text-mid);
+    }
+    .t-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .t-dot.d1 { background: var(--terra); }
+    .t-dot.d2 { background: var(--green-mid); }
+    .t-dot.d3 { background: #3B6EA5; }
+    .t-dot.d4 { background: #6B4580; }
+
+    /* Flight route display */
+    .flight-route {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .flight-city { flex: 1; }
+    .flight-city.right { text-align: right; }
+    .flight-iata {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--brown-deep);
+      line-height: 1;
+    }
+    .flight-city-sub {
+      font-size: 0.68rem;
+      color: var(--text-faint);
+      margin-top: 2px;
+    }
+    .flight-mid {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 0 0.75rem;
+    }
+    .flight-arrow {
+      width: 56px;
+      height: 1px;
+      background: var(--border);
+      position: relative;
+    }
+    .flight-arrow::after {
+      content: '✈';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -54%);
+      font-size: 0.78rem;
+      color: var(--terra);
+    }
+    .flight-airline-label {
+      font-size: 0.62rem;
+      color: var(--text-faint);
+      letter-spacing: 0.06em;
+    }
+
+    /* Field grid */
+    .bfields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+    }
+    .bfield {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 0.55rem 0.7rem;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .bfield.full { grid-column: 1 / -1; }
+    .bfield-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 0.18rem;
+    }
+    .bfield-value {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      word-break: break-word;
+    }
+    .bfield-value.mono {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--terra);
+      letter-spacing: 0.05em;
+      word-break: break-all;
+    }
+    .bfield-value.tbd {
+      color: var(--text-faint);
+      font-style: italic;
+      font-weight: 400;
+    }
+    @media (max-width: 480px) {
+      .bfields { grid-template-columns: 1fr; }
+      .bfield.full { grid-column: 1; }
+      .booking-card-inner { padding: 1.1rem; }
+      .booking-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       SECTION 2 — DAY BY DAY
+    ════════════════════════════════════════════════════════════════ */
+
+    .days-stack { display: flex; flex-direction: column; gap: 0.85rem; }
+
+    .month-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--text-soft);
+      padding: 1.75rem 0 0.6rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.75rem;
+    }
+    .month-label:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+    .day-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    /* Terracotta left accent for special days */
+    .day-card.milestone {
+      border-left: 4px solid var(--terra);
+      border-left-color: var(--terra);
+    }
+    .day-card.milestone-green {
+      border-left: 4px solid var(--green);
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 1.15rem 1.4rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .day-header:hover { background: var(--cream-warm); }
+    .day-card:not(.open) .day-header { border-bottom: none; }
+    .day-card.open .day-header { border-bottom: 1px solid var(--border-light); }
+
+    .day-numbox {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background: var(--cream-warm);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+    .day-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--brown-deep);
+      line-height: 1;
+    }
+    .day-month-short {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .day-header-text { flex: 1; min-width: 0; }
+    .day-weekday {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 0.1rem;
+    }
+    .day-date-full {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--brown-deep);
+      margin-bottom: 0.12rem;
+    }
+    .day-location-line {
+      font-size: 0.8rem;
+      color: var(--text-faint);
+      font-style: italic;
+    }
+    .day-location-line.set { color: var(--green-mid); font-style: normal; font-weight: 500; }
+
+    .day-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.3rem; }
+    .day-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.17rem 0.55rem;
+      border-radius: 20px;
+    }
+    .badge-arrive  { background: var(--terra-pale); color: var(--rust); }
+    .badge-meet    { background: var(--green-pale);  color: var(--green); }
+    .badge-depart  { background: var(--gold-pale);   color: var(--gold); }
+
+    .day-chevron {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--cream-warm);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-faint);
+      font-size: 0.7rem;
+      transition: all 0.2s;
+    }
+    .day-card.open .day-chevron {
+      background: var(--terra);
+      border-color: var(--terra);
+      color: var(--white);
+      transform: rotate(180deg);
+    }
+
+    .day-body { display: none; padding: 1.25rem 1.4rem 1.4rem; }
+    .day-card.open .day-body { display: block; }
+
+    /* Time slots — warm scrapbook cards */
+    .time-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+      margin-bottom: 0.7rem;
+    }
+    .time-slot {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 0.9rem;
+      border-top: 3px solid transparent;
+    }
+    .time-slot.m { border-top-color: var(--gold-mid); }
+    .time-slot.a { border-top-color: var(--terra-mid); }
+    .time-slot.e { border-top-color: var(--green-mid); }
+
+    .ts-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.32rem;
+    }
+    .time-slot.m .ts-label { color: var(--gold); }
+    .time-slot.a .ts-label { color: var(--terra); }
+    .time-slot.e .ts-label { color: var(--green-mid); }
+    .ts-content { font-size: 0.83rem; color: var(--text-faint); font-style: italic; min-height: 18px; line-height: 1.55; }
+
+    /* Detail fields */
+    .detail-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.7rem;
+    }
+    .detail-field {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 0.9rem;
+    }
+    .detail-field.span2 { grid-column: span 2; }
+    .detail-field.span3 { grid-column: span 3; }
+
+    .df-label {
+      font-size: 0.59rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 0.28rem;
+      display: flex; align-items: center; gap: 0.35rem;
+    }
+    .df-content { font-size: 0.83rem; color: var(--text-faint); font-style: italic; line-height: 1.6; }
+    .df-content.set { color: var(--text); font-style: normal; }
+
+    /* ════════════════════════════════════════════════════════════════
+       SECTION 3 — JOURNAL (dark green background)
+    ════════════════════════════════════════════════════════════════ */
+
+    .journal-intro-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      backdrop-filter: blur(6px);
+    }
+    .journal-intro-card p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(250,246,239,0.75);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .journal-entries { display: flex; flex-direction: column; gap: 2.25rem; }
+
+    .journal-entry {
+      background: var(--ivory);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .je-header {
+      padding: 1.5rem 2rem 1.25rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: var(--cream);
+    }
+    .je-date {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--brown-deep);
+    }
+    .je-daynum {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--terra);
+      text-transform: uppercase;
+    }
+
+    .je-body { padding: 1.75rem 2rem; }
+    .je-text {
+      min-height: 90px;
+      background: var(--cream-warm);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      font-size: 0.93rem;
+      color: var(--text-faint);
+      font-style: italic;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      border: 1px dashed var(--border);
+    }
+    .je-text.set {
+      color: var(--text);
+      font-style: normal;
+      border-style: solid;
+      border-color: var(--border-light);
+    }
+
+    /* Photo grid — scrapbook feel with slight rotation variation */
+    .je-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+    .photo-slot {
+      aspect-ratio: 4 / 3;
+      background: var(--cream-warm);
+      border-radius: var(--radius-sm);
+      border: 2px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .photo-slot:hover { border-color: var(--terra-pale); }
+    .photo-slot img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .photo-slot-inner { text-align: center; padding: 0.5rem; }
+    .ps-cam { font-size: 1.4rem; opacity: 0.25; display: block; margin-bottom: 0.3rem; }
+    .ps-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); }
+
+    /* Empty journal state */
+    .journal-empty {
+      background: rgba(255,255,255,0.06);
+      border: 1.5px dashed rgba(255,255,255,0.18);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .journal-empty p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: rgba(250,246,239,0.45);
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .journal-empty small {
+      font-size: 0.73rem;
+      color: rgba(250,246,239,0.28);
+      line-height: 1.65;
+      display: block;
+    }
+
+    /* Deep-section headings (on green bg) */
+    .outer-section.deep .eyebrow { color: var(--gold-mid); }
+    .outer-section.deep .eyebrow::after { background: rgba(255,255,255,0.15); }
+    .outer-section.deep h2.section-title { color: var(--cream); }
+    .outer-section.deep .section-subtitle { color: rgba(250,246,239,0.55); }
+
+    /* ── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      background: var(--brown);
+      padding: 2.75rem 2rem;
+      text-align: center;
+    }
+    .footer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: rgba(250,246,239,0.65);
+      margin-bottom: 0.5rem;
+    }
+    .footer-lido {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px;
+      padding: 0.38rem 1rem;
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(250,246,239,0.28);
+    }
+
+    /* ── BOOKING EVENTS (injected into day cards by JS) ─────────── */
+    .booking-event {
+      border-radius: var(--radius-sm);
+      padding: 0.42rem 0.7rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.79rem;
+      font-style: normal;
+      font-weight: 500;
+      color: var(--text-mid);
+      line-height: 1.45;
+    }
+    .booking-event--flight {
+      background: var(--terra-wash);
+      border: 1px solid var(--terra-pale);
+    }
+    .booking-event--hotel-in,
+    .booking-event--hotel-night,
+    .booking-event--hotel-out {
+      background: var(--green-wash);
+      border: 1px solid var(--green-pale);
+    }
+    .booking-event--tour,
+    .booking-event--transfer,
+    .booking-event--info {
+      background: var(--gold-wash);
+      border: 1px solid var(--gold-pale);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 760px) {
+      .outer-section { padding: 3.75rem 1.25rem; }
+      .time-row, .detail-row { grid-template-columns: 1fr 1fr; }
+      .detail-field.span3 { grid-column: span 2; }
+      .booking-grid { grid-template-columns: 1fr; }
+      .je-photos { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hero { padding: 4.5rem 1.25rem 6rem; }
+      .je-body, .je-header { padding: 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .time-row, .detail-row { grid-template-columns: 1fr; }
+      .detail-field.span2, .detail-field.span3 { grid-column: span 1; }
+      .je-photos { grid-template-columns: 1fr; }
+    }
+    @media print {
+      nav { display: none; }
+      .hero { min-height: auto; padding: 3rem 2rem; page-break-after: always; }
+      .day-body { display: block !important; }
+      .day-card { page-break-inside: avoid; }
+      .day-chevron { display: none; }
+      body { background: white; }
+      .outer-section.deep { background: white; }
+      .journal-entry { box-shadow: none; border: 1px solid #ddd; }
+    }
+
+    /* ── PRIVATE NOTES ───────────────────────────────────────────── */
+    .private-note-section {
+      margin: 1rem 0 0.5rem;
+      padding: 0.85rem 1rem;
+      background: #FFFDF5;
+      border: 1.5px dashed var(--gold-pale);
+      border-radius: var(--radius-sm);
+    }
+    .private-note-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-mid);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .private-note-label span {
+      opacity: 0.6;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.68rem;
+    }
+    .private-note-input {
+      width: 100%;
+      min-height: 60px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.65;
+      resize: none;
+      padding: 0;
+    }
+    .private-note-input::placeholder { color: var(--text-faint); font-style: italic; }
+    .private-note-actions {
+      margin-top: 0.5rem;
+      display: none;
+      gap: 0.5rem;
+    }
+    .private-note-actions.visible { display: flex; }
+    .pn-btn {
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .pn-btn-save { background: var(--gold-mid); color: white; }
+    .pn-btn-cancel { background: var(--cream-dark); color: var(--text-soft); }
+
+    /* ── SHARED ACTIVITY FORM ────────────────────────────────────── */
+    .add-activity-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 0.75rem 0 0;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--terra);
+      background: var(--terra-wash);
+      border: 1.5px solid var(--terra-pale);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+    .add-activity-btn:hover { background: var(--terra-pale); }
+    .activity-form {
+      display: none;
+      margin-top: 0.75rem;
+      background: var(--ivory);
+      border: 1.5px solid var(--terra-pale);
+      border-radius: var(--radius);
+      padding: 1rem;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .activity-form.open { display: flex; }
+    .activity-form-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+    .af-field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .af-label { font-size: 0.72rem; font-weight: 600; color: var(--text-soft); }
+    .af-input {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text);
+      background: white;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .af-input:focus { border-color: var(--terra); }
+    .af-checkboxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+    }
+    .af-check-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: white;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .af-check-label.checked {
+      border-color: var(--terra);
+      background: var(--terra-wash);
+      color: var(--terra);
+    }
+    .af-check-label input { display: none; }
+    .af-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .af-actions { display: flex; gap: 0.5rem; margin-top: 0.25rem; }
+    .af-btn {
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+    .af-btn-submit { background: var(--terra); color: white; }
+    .af-btn-submit:hover { background: var(--rust); }
+    .af-btn-cancel { background: var(--cream-dark); color: var(--text-soft); }
+    .af-success {
+      display: none;
+      text-align: center;
+      padding: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--green);
+      font-weight: 600;
+    }
+    .af-success.show { display: block; }
+  </style>
+</head>
+
+<body>
+
+<!-- ─────────────────────────────────────────────────────────────────
+     TRIP METADATA — update these when creating a new trip file
+     Access via: document.getElementById('trip-meta').dataset.*
+──────────────────────────────────────────────────────────────── -->
+<div id="trip-meta" style="display:none"
+  data-trip-id="taiwan-2026-family"
+  data-trip-name="Taiwan November 2026 — A Family Journey"
+  data-trip-part="1"
+  data-trip-part-label="Family Journey"
+  data-traveller-1-label="Linda"
+  data-traveller-1-fullname="Hsu Haolinglinda"
+  data-traveller-2-label="Mom"
+  data-traveller-2-fullname="Kao Shumai"
+  data-traveller-3-label="Benjamin"
+  data-traveller-3-fullname="Benjaminhaozheong Hsu"
+  data-traveller-4-label="Dad"
+  data-traveller-4-fullname="Weilong Hsu"
+  data-itinerary-start="2026-11-14"
+  data-itinerary-end="2026-12-12"
+  data-traveller-1-departure="2026-11-14"
+  data-traveller-1-return="2026-12-12"
+  data-traveller-2-departure="2026-11-09"
+  data-traveller-2-return="2026-12-17"
+  data-traveller-3-departure="2026-11-14"
+  data-traveller-4-departure="2026-11-14"
+  data-generated-date="2026-06-21"
+  data-template-version="1.1"
+  data-lido-agent="Lido Travel">
+</div>
+
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">Taiwan · November 2026</a>
+    <div class="nav-links">
+      <a href="#tripinfo">Trip Info</a>
+      <a href="#itinerary">Day by Day</a>
+      <a href="#journal">Journal</a>
+    </div>
+  </div>
+</nav>
+
+<!-- TRAVELLER TABS — filters Section 1 booking cards -->
+<div class="traveller-bar" id="traveller-bar">
+  <div class="traveller-bar-inner">
+    <button class="t-tab active" onclick="filterTraveller(this,'1')">
+      <span class="t-dot" style="background:var(--terra)"></span> Linda
+    </button>
+    <button class="t-tab" onclick="filterTraveller(this,'2')">
+      <span class="t-dot" style="background:var(--green-mid)"></span> Shumai
+    </button>
+    <button class="t-tab" onclick="filterTraveller(this,'3')">
+      <span class="t-dot" style="background:#3B6EA5"></span> Benjamin
+    </button>
+    <button class="t-tab" onclick="filterTraveller(this,'4')">
+      <span class="t-dot" style="background:#6B4580"></span> Weilong
+    </button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════════ -->
+<header id="hero" class="hero">
+  <div class="hero-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+  </div>
+
+  <div class="hero-mountain">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- back range -->
+      <path d="M0,290 L70,215 L150,245 L240,170 L335,200 L425,130 L515,168 L600,105 L695,138 L785,88 L870,118 L960,72 L1050,100 L1145,148 L1230,108 L1320,162 L1390,188 L1440,168 L1440,320 L0,320Z"
+            fill="rgba(0,0,0,0.2)"/>
+      <!-- front range -->
+      <path d="M0,320 L55,262 L135,278 L215,235 L305,252 L395,210 L480,232 L555,196 L635,215 L715,180 L810,208 L895,172 L975,195 L1060,215 L1145,182 L1245,228 L1325,250 L1440,238 L1440,320Z"
+            fill="rgba(0,0,0,0.32)"/>
+      <!-- treeline -->
+      <path d="M0,320 L28,306 L65,312 L105,302 L148,308 L195,296 L248,303 L298,292 L352,298 L408,287 L462,294 L518,283 L578,290 L638,280 L695,287 L752,277 L810,284 L868,275 L924,282 L982,290 L1040,281 L1100,290 L1160,280 L1218,288 L1275,280 L1328,287 L1380,280 L1440,285 L1440,320Z"
+            fill="rgba(46,83,70,0.65)"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">✦ A Lido Travel Journey · Part 1 of 2</span>
+    <span class="hero-title-zh">A Family Journey to the Island</span>
+    <span class="hero-title">Taiwan</span>
+    <p class="hero-sub">November · December 2026</p>
+    <div class="hero-dates">
+      <span>Nov 14, 2026</span>
+      <div class="hero-dates-dot"></div>
+      <span>Dec 12, 2026</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll">Scroll</div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 1 — TRIP INFO
+═══════════════════════════════════════════════════════════════ -->
+<section id="tripinfo" class="outer-section">
+  <div class="inner">
+
+    <div class="section-header">
+      <div class="eyebrow">01 · Trip Info</div>
+      <h2 class="section-title">Bookings &amp; Reference</h2>
+      <p class="section-subtitle">Everything in one place — flights, hotels, and whatever comes next.</p>
+    </div>
+
+    <div class="booking-grid">
+
+      <!-- ───────────────────────────────────────────────────────────
+           LIDO:BOOKING type="flight" id="flight-t1-outbound"
+           traveller="1" direction="outbound"
+           Fields: traveller_label, origin_iata, origin_city,
+                   destination_iata, destination_city, airline,
+                   flight_number, departure_date, departure_time,
+                   cabin_class, booking_ref, ticket_number,
+                   return_date, checked_bags, seat
+      ─────────────────────────────────────────────────────────── -->
+      <div class="booking-card t1"
+           data-booking="flight-t1-outbound"
+           data-booking-type="flight"
+           data-traveller="1"
+           data-direction="outbound">
+        <div class="booking-card-inner">
+          <div class="booking-type-row">
+            <span class="booking-type-label">Flight — Outbound</span>
+            <span class="traveller-pill">
+              <span class="t-dot d1"></span>
+              <!-- LIDO:FIELD name="traveller_label" booking="flight-t1-outbound" -->
+              <span data-booking="flight-t1-outbound" data-field="traveller_label">Linda · Traveller 1</span>
+              <!-- /LIDO:FIELD -->
+            </span>
+          </div>
+          <div class="flight-route">
+            <div class="flight-city">
+              <!-- LIDO:FIELD name="origin_iata" booking="flight-t1-outbound" -->
+              <div class="flight-iata" data-booking="flight-t1-outbound" data-field="origin_iata">YYZ</div>
+              <!-- /LIDO:FIELD -->
+              <!-- LIDO:FIELD name="origin_city" booking="flight-t1-outbound" -->
+              <div class="flight-city-sub" data-booking="flight-t1-outbound" data-field="origin_city">Toronto</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="flight-mid">
+              <div class="flight-arrow"></div>
+              <!-- LIDO:FIELD name="airline" booking="flight-t1-outbound" -->
+              <div class="flight-airline-label" data-booking="flight-t1-outbound" data-field="airline">EVA Air</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="flight-city right">
+              <!-- LIDO:FIELD name="destination_iata" booking="flight-t1-outbound" -->
+              <div class="flight-iata" data-booking="flight-t1-outbound" data-field="destination_iata">TPE</div>
+              <!-- /LIDO:FIELD -->
+              <!-- LIDO:FIELD name="destination_city" booking="flight-t1-outbound" -->
+              <div class="flight-city-sub" data-booking="flight-t1-outbound" data-field="destination_city">Taipei</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+          <div class="bfields">
+            <div class="bfield">
+              <div class="bfield-label">Flight</div>
+              <!-- LIDO:FIELD name="flight_number" booking="flight-t1-outbound" -->
+              <div class="bfield-value" data-booking="flight-t1-outbound" data-field="flight_number">EVA Air BR035</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Date</div>
+              <!-- LIDO:FIELD name="departure_date" booking="flight-t1-outbound" -->
+              <div class="bfield-value" data-booking="flight-t1-outbound" data-field="departure_date">Nov 14, 2026</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Departs</div>
+              <!-- LIDO:FIELD name="departure_time" booking="flight-t1-outbound" -->
+              <div class="bfield-value" data-booking="flight-t1-outbound" data-field="departure_time">12:15 AM</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Cabin</div>
+              <!-- LIDO:FIELD name="cabin_class" booking="flight-t1-outbound" -->
+              <div class="bfield-value" data-booking="flight-t1-outbound" data-field="cabin_class">Economy</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Booking Ref</div>
+              <!-- LIDO:FIELD name="booking_ref" booking="flight-t1-outbound" -->
+              <div class="bfield-value mono" data-booking="flight-t1-outbound" data-field="booking_ref">DGU8L5</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Ticket No.</div>
+              <!-- LIDO:FIELD name="ticket_number" booking="flight-t1-outbound" -->
+              <div class="bfield-value mono" data-booking="flight-t1-outbound" data-field="ticket_number">695-2465497353</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Return</div>
+              <!-- LIDO:FIELD name="return_date" booking="flight-t1-outbound" -->
+              <div class="bfield-value" data-booking="flight-t1-outbound" data-field="return_date">Dec 12, 2026</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Checked Bags</div>
+              <!-- LIDO:FIELD name="checked_bags" booking="flight-t1-outbound" -->
+              <div class="bfield-value" data-booking="flight-t1-outbound" data-field="checked_bags">2 included</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Seat</div>
+              <!-- LIDO:FIELD name="seat" booking="flight-t1-outbound" -->
+              <div class="bfield-value tbd" data-booking="flight-t1-outbound" data-field="seat">To be assigned</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /LIDO:BOOKING flight-t1-outbound -->
+
+
+      <!-- ───────────────────────────────────────────────────────────
+           LIDO:BOOKING type="flight" id="flight-t2-outbound"
+           traveller="2" direction="outbound"
+      ─────────────────────────────────────────────────────────── -->
+      <div class="booking-card t2"
+           data-booking="flight-t2-outbound"
+           data-booking-type="flight"
+           data-traveller="2"
+           data-direction="outbound">
+        <div class="booking-card-inner">
+          <div class="booking-type-row">
+            <span class="booking-type-label">Flight — Outbound</span>
+            <span class="traveller-pill">
+              <span class="t-dot d2"></span>
+              <!-- LIDO:FIELD name="traveller_label" booking="flight-t2-outbound" -->
+              <span data-booking="flight-t2-outbound" data-field="traveller_label">Mom · Kao Shumai</span>
+              <!-- /LIDO:FIELD -->
+            </span>
+          </div>
+          <div class="flight-route">
+            <div class="flight-city">
+              <!-- LIDO:FIELD name="origin_iata" booking="flight-t2-outbound" -->
+              <div class="flight-iata" data-booking="flight-t2-outbound" data-field="origin_iata">YYZ</div>
+              <!-- /LIDO:FIELD -->
+              <!-- LIDO:FIELD name="origin_city" booking="flight-t2-outbound" -->
+              <div class="flight-city-sub" data-booking="flight-t2-outbound" data-field="origin_city">Toronto</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="flight-mid">
+              <div class="flight-arrow"></div>
+              <!-- LIDO:FIELD name="airline" booking="flight-t2-outbound" -->
+              <div class="flight-airline-label" data-booking="flight-t2-outbound" data-field="airline">EVA Air</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="flight-city right">
+              <!-- LIDO:FIELD name="destination_iata" booking="flight-t2-outbound" -->
+              <div class="flight-iata" data-booking="flight-t2-outbound" data-field="destination_iata">TPE</div>
+              <!-- /LIDO:FIELD -->
+              <!-- LIDO:FIELD name="destination_city" booking="flight-t2-outbound" -->
+              <div class="flight-city-sub" data-booking="flight-t2-outbound" data-field="destination_city">Taipei</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+          <div class="bfields">
+            <div class="bfield">
+              <div class="bfield-label">Flight</div>
+              <!-- LIDO:FIELD name="flight_number" booking="flight-t2-outbound" -->
+              <div class="bfield-value" data-booking="flight-t2-outbound" data-field="flight_number">EVA Air BR035</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Date</div>
+              <!-- LIDO:FIELD name="departure_date" booking="flight-t2-outbound" -->
+              <div class="bfield-value" data-booking="flight-t2-outbound" data-field="departure_date">Nov 9, 2026</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Departs</div>
+              <!-- LIDO:FIELD name="departure_time" booking="flight-t2-outbound" -->
+              <div class="bfield-value" data-booking="flight-t2-outbound" data-field="departure_time">12:15 AM</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Cabin</div>
+              <!-- LIDO:FIELD name="cabin_class" booking="flight-t2-outbound" -->
+              <div class="bfield-value" data-booking="flight-t2-outbound" data-field="cabin_class">Premium Economy</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Booking Ref</div>
+              <!-- LIDO:FIELD name="booking_ref" booking="flight-t2-outbound" -->
+              <div class="bfield-value mono" data-booking="flight-t2-outbound" data-field="booking_ref">DGXF7X</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Ticket No.</div>
+              <!-- LIDO:FIELD name="ticket_number" booking="flight-t2-outbound" -->
+              <div class="bfield-value mono" data-booking="flight-t2-outbound" data-field="ticket_number">695-2465497354</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Return</div>
+              <!-- LIDO:FIELD name="return_date" booking="flight-t2-outbound" -->
+              <div class="bfield-value" data-booking="flight-t2-outbound" data-field="return_date">Dec 17, 2026</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Checked Bags</div>
+              <!-- LIDO:FIELD name="checked_bags" booking="flight-t2-outbound" -->
+              <div class="bfield-value" data-booking="flight-t2-outbound" data-field="checked_bags">2 included</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Seat</div>
+              <!-- LIDO:FIELD name="seat" booking="flight-t2-outbound" -->
+              <div class="bfield-value tbd" data-booking="flight-t2-outbound" data-field="seat">To be assigned</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /LIDO:BOOKING flight-t2-outbound -->
+
+
+      <!-- ───────────────────────────────────────────────────────────
+           LIDO:BOOKING type="flight" id="flight-t3-outbound"
+           traveller="3" direction="outbound"
+      ─────────────────────────────────────────────────────────── -->
+      <div class="booking-card t3"
+           data-booking="flight-t3-outbound"
+           data-booking-type="flight"
+           data-traveller="3"
+           data-direction="outbound">
+        <div class="booking-card-inner">
+          <div class="booking-type-row">
+            <span class="booking-type-label">Flight — Outbound</span>
+            <span class="traveller-pill">
+              <span class="t-dot d3"></span>
+              <!-- LIDO:FIELD name="traveller_label" booking="flight-t3-outbound" -->
+              <span data-booking="flight-t3-outbound" data-field="traveller_label">Benjamin · Traveller 3</span>
+              <!-- /LIDO:FIELD -->
+            </span>
+          </div>
+          <div class="flight-route">
+            <div class="flight-city">
+              <!-- LIDO:FIELD name="origin_iata" booking="flight-t3-outbound" -->
+              <div class="flight-iata" data-booking="flight-t3-outbound" data-field="origin_iata">YYZ</div>
+              <!-- /LIDO:FIELD -->
+              <!-- LIDO:FIELD name="origin_city" booking="flight-t3-outbound" -->
+              <div class="flight-city-sub" data-booking="flight-t3-outbound" data-field="origin_city">Toronto · T1</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="flight-mid">
+              <div class="flight-arrow"></div>
+              <!-- LIDO:FIELD name="airline" booking="flight-t3-outbound" -->
+              <div class="flight-airline-label" data-booking="flight-t3-outbound" data-field="airline">EVA Air</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="flight-city right">
+              <!-- LIDO:FIELD name="destination_iata" booking="flight-t3-outbound" -->
+              <div class="flight-iata" data-booking="flight-t3-outbound" data-field="destination_iata">TPE</div>
+              <!-- /LIDO:FIELD -->
+              <!-- LIDO:FIELD name="destination_city" booking="flight-t3-outbound" -->
+              <div class="flight-city-sub" data-booking="flight-t3-outbound" data-field="destination_city">Taipei · T2</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+          <div class="bfields">
+            <div class="bfield">
+              <div class="bfield-label">Flight</div>
+              <!-- LIDO:FIELD name="flight_number" booking="flight-t3-outbound" -->
+              <div class="bfield-value" data-booking="flight-t3-outbound" data-field="flight_number">EVA Air BR035</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Date</div>
+              <!-- LIDO:FIELD name="departure_date" booking="flight-t3-outbound" -->
+              <div class="bfield-value" data-booking="flight-t3-outbound" data-field="departure_date">Nov 14, 2026</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Departs</div>
+              <!-- LIDO:FIELD name="departure_time" booking="flight-t3-outbound" -->
+              <div class="bfield-value" data-booking="flight-t3-outbound" data-field="departure_time">12:15 AM</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Arrives</div>
+              <!-- LIDO:FIELD name="arrival_time" booking="flight-t3-outbound" -->
+              <div class="bfield-value" data-booking="flight-t3-outbound" data-field="arrival_time">5:10 AM (Nov 15)</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Duration</div>
+              <div class="bfield-value">15h 55min</div>
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Aircraft</div>
+              <div class="bfield-value">Boeing 777-300ER</div>
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Cabin</div>
+              <!-- LIDO:FIELD name="cabin_class" booking="flight-t3-outbound" -->
+              <div class="bfield-value" data-booking="flight-t3-outbound" data-field="cabin_class">Economy Basic (Class S)</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Checked Bags</div>
+              <!-- LIDO:FIELD name="checked_bags" booking="flight-t3-outbound" -->
+              <div class="bfield-value" data-booking="flight-t3-outbound" data-field="checked_bags">2 × 23kg + 1 carry-on</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Booking Ref</div>
+              <!-- LIDO:FIELD name="booking_ref" booking="flight-t3-outbound" -->
+              <div class="bfield-value mono" data-booking="flight-t3-outbound" data-field="booking_ref">D5QV5G</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Ticket No.</div>
+              <!-- LIDO:FIELD name="ticket_number" booking="flight-t3-outbound" -->
+              <div class="bfield-value mono" data-booking="flight-t3-outbound" data-field="ticket_number">695-2464966335</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Cost</div>
+              <div class="bfield-value">CAD 2,276.52</div>
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Seat</div>
+              <!-- LIDO:FIELD name="seat" booking="flight-t3-outbound" -->
+              <div class="bfield-value tbd" data-booking="flight-t3-outbound" data-field="seat">To be assigned</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /LIDO:BOOKING flight-t3-outbound -->
+
+
+      <!-- ───────────────────────────────────────────────────────────
+           LIDO:BOOKING type="flight" id="flight-t4-outbound"
+           traveller="4" direction="outbound"
+      ─────────────────────────────────────────────────────────── -->
+      <div class="booking-card t4"
+           data-booking="flight-t4-outbound"
+           data-booking-type="flight"
+           data-traveller="4"
+           data-direction="outbound">
+        <div class="booking-card-inner">
+          <div class="booking-type-row">
+            <span class="booking-type-label">Flight — Outbound</span>
+            <span class="traveller-pill">
+              <span class="t-dot d4"></span>
+              <!-- LIDO:FIELD name="traveller_label" booking="flight-t4-outbound" -->
+              <span data-booking="flight-t4-outbound" data-field="traveller_label">Dad · Weilong Hsu</span>
+              <!-- /LIDO:FIELD -->
+            </span>
+          </div>
+          <div class="flight-route">
+            <div class="flight-city">
+              <!-- LIDO:FIELD name="origin_iata" booking="flight-t4-outbound" -->
+              <div class="flight-iata" data-booking="flight-t4-outbound" data-field="origin_iata">YYZ</div>
+              <!-- /LIDO:FIELD -->
+              <!-- LIDO:FIELD name="origin_city" booking="flight-t4-outbound" -->
+              <div class="flight-city-sub" data-booking="flight-t4-outbound" data-field="origin_city">Toronto · T1</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="flight-mid">
+              <div class="flight-arrow"></div>
+              <!-- LIDO:FIELD name="airline" booking="flight-t4-outbound" -->
+              <div class="flight-airline-label" data-booking="flight-t4-outbound" data-field="airline">EVA Air</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="flight-city right">
+              <!-- LIDO:FIELD name="destination_iata" booking="flight-t4-outbound" -->
+              <div class="flight-iata" data-booking="flight-t4-outbound" data-field="destination_iata">TPE</div>
+              <!-- /LIDO:FIELD -->
+              <!-- LIDO:FIELD name="destination_city" booking="flight-t4-outbound" -->
+              <div class="flight-city-sub" data-booking="flight-t4-outbound" data-field="destination_city">Taipei · T2</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+          <div class="bfields">
+            <div class="bfield">
+              <div class="bfield-label">Flight</div>
+              <!-- LIDO:FIELD name="flight_number" booking="flight-t4-outbound" -->
+              <div class="bfield-value" data-booking="flight-t4-outbound" data-field="flight_number">EVA Air BR035</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Date</div>
+              <!-- LIDO:FIELD name="departure_date" booking="flight-t4-outbound" -->
+              <div class="bfield-value" data-booking="flight-t4-outbound" data-field="departure_date">Nov 14, 2026</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Departs</div>
+              <!-- LIDO:FIELD name="departure_time" booking="flight-t4-outbound" -->
+              <div class="bfield-value" data-booking="flight-t4-outbound" data-field="departure_time">12:15 AM</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Arrives</div>
+              <!-- LIDO:FIELD name="arrival_time" booking="flight-t4-outbound" -->
+              <div class="bfield-value" data-booking="flight-t4-outbound" data-field="arrival_time">5:10 AM (Nov 15)</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Duration</div>
+              <div class="bfield-value">15h 55min</div>
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Aircraft</div>
+              <div class="bfield-value">Boeing 777-300ER</div>
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Cabin</div>
+              <!-- LIDO:FIELD name="cabin_class" booking="flight-t4-outbound" -->
+              <div class="bfield-value" data-booking="flight-t4-outbound" data-field="cabin_class">Economy Basic (Class S)</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Checked Bags</div>
+              <!-- LIDO:FIELD name="checked_bags" booking="flight-t4-outbound" -->
+              <div class="bfield-value" data-booking="flight-t4-outbound" data-field="checked_bags">2 × 23kg + 1 carry-on</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Booking Ref</div>
+              <!-- LIDO:FIELD name="booking_ref" booking="flight-t4-outbound" -->
+              <div class="bfield-value mono" data-booking="flight-t4-outbound" data-field="booking_ref">D5QV5G</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Ticket No.</div>
+              <!-- LIDO:FIELD name="ticket_number" booking="flight-t4-outbound" -->
+              <div class="bfield-value mono" data-booking="flight-t4-outbound" data-field="ticket_number">695-2464966336</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Cost</div>
+              <div class="bfield-value">CAD 2,276.52</div>
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Seat</div>
+              <!-- LIDO:FIELD name="seat" booking="flight-t4-outbound" -->
+              <div class="bfield-value tbd" data-booking="flight-t4-outbound" data-field="seat">To be assigned</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /LIDO:BOOKING flight-t4-outbound -->
+
+
+      <!-- ───────────────────────────────────────────────────────────
+           LIDO:BOOKING type="hotel" id="hotel-1"
+           traveller="1,3" · Room A — Linda + Benjamin
+           Fields: property_name, address, check_in_date,
+                   check_out_date, confirmation_number,
+                   room_type, cost, notes
+      ─────────────────────────────────────────────────────────── -->
+      <div class="booking-card hotel"
+           data-booking="hotel-1"
+           data-booking-type="hotel"
+           data-traveller="1,3">
+        <div class="booking-card-inner">
+          <div class="booking-type-row">
+            <span class="booking-type-label">Accommodation · Room A</span>
+            <span class="traveller-pill">
+              <span class="t-dot d1"></span>
+              <span class="t-dot d3" style="margin-left:-2px"></span>
+              Linda &amp; Benjamin
+            </span>
+          </div>
+          <div class="bfields">
+            <div class="bfield full">
+              <div class="bfield-label">Property</div>
+              <!-- LIDO:FIELD name="property_name" booking="hotel-1" -->
+              <div class="bfield-value" data-booking="hotel-1" data-field="property_name">Hotel Gracery Taipei</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Address</div>
+              <!-- LIDO:FIELD name="address" booking="hotel-1" -->
+              <div class="bfield-value" data-booking="hotel-1" data-field="address">
+                <a href="https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei" target="_blank" style="color:var(--terra);text-decoration:none;font-weight:500;">📍 3F, No. 89, Sec. 2, Zhongxiao E. Rd., Zhongzheng District, Taipei 100013</a>
+              </div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Check-In</div>
+              <!-- LIDO:FIELD name="check_in_date" booking="hotel-1" -->
+              <div class="bfield-value" data-booking="hotel-1" data-field="check_in_date">Nov 15, 2026 · from 3:00 PM</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Check-Out</div>
+              <!-- LIDO:FIELD name="check_out_date" booking="hotel-1" -->
+              <div class="bfield-value" data-booking="hotel-1" data-field="check_out_date">Nov 21, 2026 · by 12:00 PM</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Room</div>
+              <!-- LIDO:FIELD name="room_type" booking="hotel-1" -->
+              <div class="bfield-value" data-booking="hotel-1" data-field="room_type">KIYOKEN Collaboration Room · Twin (2 Single Beds) · 6 nights</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Confirmation (Nov 15–18)</div>
+              <!-- LIDO:FIELD name="confirmation_number" booking="hotel-1" -->
+              <div class="bfield-value mono" data-booking="hotel-1" data-field="confirmation_number">HsuTev9xb194TwHO</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Confirmation (Nov 18–21)</div>
+              <!-- LIDO:FIELD name="confirmation_number_2" booking="hotel-1" -->
+              <div class="bfield-value mono" data-booking="hotel-1" data-field="confirmation_number_2">HsuTev9xgk97TwHO</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Nights</div>
+              <div class="bfield-value">6 nights</div>
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Cost</div>
+              <!-- LIDO:FIELD name="cost" booking="hotel-1" -->
+              <div class="bfield-value" data-booking="hotel-1" data-field="cost">CA$1,192.87 total</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full" style="background:var(--terra-wash);border:1px solid var(--terra-pale);">
+              <div class="bfield-label" style="color:var(--rust);">📌 Reminder — Action Required</div>
+              <div class="bfield-value" style="font-size:0.82rem;line-height:1.6;">
+                Email hotel to confirm Room A is set up as <strong>Twin (2 single beds)</strong> for Linda &amp; Benjamin across both booking refs.<br>
+                <a href="mailto:reservation@gracery-taipei.com" style="color:var(--rust);font-weight:600;text-decoration:none;">reservation@gracery-taipei.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /LIDO:BOOKING hotel-1 -->
+
+
+      <!-- ───────────────────────────────────────────────────────────
+           LIDO:BOOKING type="hotel" id="hotel-2"
+           traveller="2,4" · Room B — Shumai + Weilong
+      ─────────────────────────────────────────────────────────── -->
+      <div class="booking-card hotel"
+           data-booking="hotel-2"
+           data-booking-type="hotel"
+           data-traveller="2,4">
+        <div class="booking-card-inner">
+          <div class="booking-type-row">
+            <span class="booking-type-label">Accommodation · Room B</span>
+            <span class="traveller-pill">
+              <span class="t-dot d2"></span>
+              <span class="t-dot d4" style="margin-left:-2px"></span>
+              Shumai &amp; Weilong
+            </span>
+          </div>
+          <div class="bfields">
+            <div class="bfield full">
+              <div class="bfield-label">Property</div>
+              <!-- LIDO:FIELD name="property_name" booking="hotel-2" -->
+              <div class="bfield-value" data-booking="hotel-2" data-field="property_name">Hotel Gracery Taipei</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Address</div>
+              <!-- LIDO:FIELD name="address" booking="hotel-2" -->
+              <div class="bfield-value" data-booking="hotel-2" data-field="address">
+                <a href="https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei" target="_blank" style="color:var(--terra);text-decoration:none;font-weight:500;">📍 3F, No. 89, Sec. 2, Zhongxiao E. Rd., Zhongzheng District, Taipei 100013</a>
+              </div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Check-In</div>
+              <!-- LIDO:FIELD name="check_in_date" booking="hotel-2" -->
+              <div class="bfield-value" data-booking="hotel-2" data-field="check_in_date">Nov 15, 2026 · from 3:00 PM</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Check-Out</div>
+              <!-- LIDO:FIELD name="check_out_date" booking="hotel-2" -->
+              <div class="bfield-value" data-booking="hotel-2" data-field="check_out_date">Nov 21, 2026 · by 12:00 PM</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Room</div>
+              <!-- LIDO:FIELD name="room_type" booking="hotel-2" -->
+              <div class="bfield-value" data-booking="hotel-2" data-field="room_type">Universal Room (Double, Queensize)</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Confirmation No.</div>
+              <!-- LIDO:FIELD name="confirmation_number" booking="hotel-2" -->
+              <div class="bfield-value mono" data-booking="hotel-2" data-field="confirmation_number">HsuTev9xmq75TwHO</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Nights</div>
+              <div class="bfield-value">6 nights</div>
+            </div>
+            <div class="bfield">
+              <div class="bfield-label">Cost</div>
+              <!-- LIDO:FIELD name="cost" booking="hotel-2" -->
+              <div class="bfield-value" data-booking="hotel-2" data-field="cost">CA$1,112.15</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /LIDO:BOOKING hotel-2 -->
+
+
+      <!-- Add booking placeholder
+           Duplicate any booking-card block, assign a new data-booking id
+           (e.g. "hotel-2", "tour-1", "transfer-1") and update all data-field values.
+      -->
+      <div class="booking-card add" data-traveller="shared">
+        <div class="add-inner">
+          <div class="add-plus">＋</div>
+          <p>Add another booking<br><small style="color:var(--text-faint);">Duplicate any card above &amp; update the details</small></p>
+        </div>
+      </div>
+
+      <!-- Shown when a placeholder traveller tab is selected -->
+      <div class="booking-coming-soon" id="booking-coming-soon">
+        <p>Bookings coming soon</p>
+        <small>No bookings confirmed for this traveller yet.<br>Forward the confirmation email to add their details here.</small>
+      </div>
+
+    </div><!-- /booking-grid -->
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 2 — DAY BY DAY  (Nov 14 – Dec 12, Linda's dates)
+     Each .day-card: data-date="YYYY-MM-DD"
+     Sub-fields:     data-day-field="location|morning|afternoon|evening|transport|meals|notes"
+═══════════════════════════════════════════════════════════════ -->
+<section id="itinerary" class="outer-section alt">
+  <div class="inner">
+
+    <div class="section-header">
+      <div class="eyebrow">02 · Day by Day</div>
+      <h2 class="section-title">The Itinerary</h2>
+      <p class="section-subtitle">29 days in Taiwan — each one waiting to be filled in.</p>
+    </div>
+
+    <div class="days-stack" id="days-container">
+      <!-- Generated by JavaScript below -->
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 3 — JOURNAL
+     Entry schema:
+       <div class="journal-entry" data-journal-date="YYYY-MM-DD">
+         <div class="je-header">
+           <div class="je-date">November 14, 2026</div>
+           <div class="je-daynum">Day 1 · Friday</div>
+         </div>
+         <div class="je-body">
+           <div class="je-text set" data-journal-field="text">Write here...</div>
+           <div class="je-photos">
+             <div class="photo-slot">
+               <img src="PHOTO_URL" alt="Caption" data-journal-field="photo-1" />
+               <div class="photo-slot-inner"><span class="ps-cam">📷</span><span class="ps-label">Photo</span></div>
+             </div>
+             [repeat for photo-2, photo-3]
+           </div>
+         </div>
+       </div>
+═══════════════════════════════════════════════════════════════ -->
+<section id="journal" class="outer-section deep">
+  <div class="inner">
+
+    <div class="section-header">
+      <div class="eyebrow">03 · Journal</div>
+      <h2 class="section-title">Travel Diary</h2>
+      <p class="section-subtitle">A keepsake, written day by day.</p>
+    </div>
+
+    <div class="journal-intro-card">
+      <p>This is where the memories live. Write a little each day — the feeling of a place, a meal that surprised you, something Mom said. Add photos as you go. Come back to this long after you're home.</p>
+    </div>
+
+    <div class="journal-entries" id="journal-entries">
+      <!-- Journal entries added here as the trip unfolds.
+           Paste the entry template from the comment above this section. -->
+    </div>
+
+    <div class="journal-empty" id="journal-empty">
+      <p>The diary starts when you land.</p>
+      <small>Entries will appear here as the trip unfolds.<br>Paste the journal entry template (see HTML comments) into the journal-entries div above.</small>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">Taiwan · November 2026 · A Family Journey</div>
+  <div class="footer-lido">🧧 A Lido Travel Journey</div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DAY CARD GENERATOR — Nov 14 to Dec 12 (Linda's dates)
+     Adjust START / END in trip-meta and here if dates change.
+═══════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  const WEEKDAYS     = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTHS       = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  // Linda's dates: Nov 14 arrival → Dec 12 departure
+  const START = new Date(2026, 10, 14);  // Nov 14 2026
+  const END   = new Date(2026, 11, 12);  // Dec 12 2026
+
+  // Milestone flags — edit as trip planning evolves
+  const FLAGS = {
+    '2026-11-14': [{ cls: 'badge-arrive', text: '✈ Arrival day' }],
+    '2026-12-12': [{ cls: 'badge-depart', text: '✈ Departure day' }],
+  };
+
+  function isoDate(d) {
+    return d.getFullYear() + '-'
+      + String(d.getMonth() + 1).padStart(2, '0') + '-'
+      + String(d.getDate()).padStart(2, '0');
+  }
+
+  const container = document.getElementById('days-container');
+  let currentMonth = -1;
+  let dayNum = 0;
+
+  for (let d = new Date(START); d <= END; d.setDate(d.getDate() + 1)) {
+    const iso = isoDate(d);
+    const mn  = d.getMonth();
+    dayNum++;
+
+    // Month heading
+    if (mn !== currentMonth) {
+      currentMonth = mn;
+      const mh = document.createElement('div');
+      mh.className = 'month-label';
+      mh.textContent = MONTHS[mn] + ' ' + d.getFullYear();
+      container.appendChild(mh);
+    }
+
+    const milestones  = FLAGS[iso] || [];
+    const isArrival   = iso === '2026-11-14';
+    const isDeparture = iso === '2026-12-12';
+    const openDefault = milestones.length > 0;
+
+    const badges = milestones.map(f =>
+      `<span class="day-badge ${f.cls}">${f.text}</span>`
+    ).join('');
+
+    const card = document.createElement('div');
+    card.className = 'day-card'
+      + (isArrival   ? ' milestone' : '')
+      + (isDeparture ? ' milestone-green' : '')
+      + (openDefault ? ' open' : '');
+    card.setAttribute('data-date', iso);
+
+    card.innerHTML = `
+      <!-- LIDO:DAY date="${iso}" day="${dayNum}" -->
+      <div class="day-header" onclick="this.closest('.day-card').classList.toggle('open')">
+        <div class="day-numbox">
+          <span class="day-num">${String(d.getDate()).padStart(2, '0')}</span>
+          <span class="day-month-short">${MONTHS_SHORT[mn]}</span>
+        </div>
+        <div class="day-header-text">
+          <div class="day-weekday">${WEEKDAYS[d.getDay()]} &middot; Day ${dayNum}</div>
+          <div class="day-date-full">${MONTHS[mn]} ${d.getDate()}, ${d.getFullYear()}</div>
+          <!-- LIDO:FIELD name="location" date="${iso}" -->
+          <div class="day-location-line" data-day-field="location">Location to be confirmed</div>
+          <!-- /LIDO:FIELD -->
+          ${badges ? `<div class="day-badges">${badges}</div>` : ''}
+        </div>
+        <div class="day-chevron">&#9660;</div>
+      </div>
+
+      <div class="day-body">
+        <div class="time-row">
+          <div class="time-slot m">
+            <div class="ts-label">Morning</div>
+            <!-- LIDO:FIELD name="morning" date="${iso}" -->
+            <div class="ts-content" data-day-field="morning">&mdash;</div>
+            <!-- /LIDO:FIELD -->
+          </div>
+          <div class="time-slot a">
+            <div class="ts-label">Afternoon</div>
+            <!-- LIDO:FIELD name="afternoon" date="${iso}" -->
+            <div class="ts-content" data-day-field="afternoon">&mdash;</div>
+            <!-- /LIDO:FIELD -->
+          </div>
+          <div class="time-slot e">
+            <div class="ts-label">Evening</div>
+            <!-- LIDO:FIELD name="evening" date="${iso}" -->
+            <div class="ts-content" data-day-field="evening">&mdash;</div>
+            <!-- /LIDO:FIELD -->
+          </div>
+        </div>
+
+        <div class="detail-row">
+          <div class="detail-field span3">
+            <div class="df-label">🚌 Transport</div>
+            <!-- LIDO:FIELD name="transport" date="${iso}" -->
+            <div class="df-content" data-day-field="transport">Point-to-point notes &mdash; e.g. &ldquo;Airport &rarr; Hotel: MRT Blue Line to Taipei Main Station, ~40 min&rdquo;</div>
+            <!-- /LIDO:FIELD -->
+          </div>
+
+          <div class="detail-field span2">
+            <div class="df-label">🍽️ Meals</div>
+            <!-- LIDO:FIELD name="meals" date="${iso}" -->
+            <div class="df-content" data-day-field="meals">Breakfast &middot; Lunch &middot; Dinner</div>
+            <!-- /LIDO:FIELD -->
+          </div>
+          <div class="detail-field">
+            <div class="df-label">📝 Notes</div>
+            <!-- LIDO:FIELD name="notes" date="${iso}" -->
+            <div class="df-content" data-day-field="notes">&mdash;</div>
+            <!-- /LIDO:FIELD -->
+          </div>
+        </div>
+
+        <!-- PRIVATE NOTES — localStorage only, never shared -->
+        <div class="private-note-section">
+          <div class="private-note-label">🔒 My Private Notes <span>· only you can see this</span></div>
+          <textarea class="private-note-input" placeholder="Jot something just for you..." rows="2"
+            oninput="onPrivateNoteInput(this, '${iso}')">${'</textarea>'}
+          <div class="private-note-actions" id="pna-${iso}">
+            <button class="pn-btn pn-btn-save" onclick="savePrivateNote(this, '${iso}')">Save</button>
+            <button class="pn-btn pn-btn-cancel" onclick="cancelPrivateNote(this, '${iso}')">Cancel</button>
+          </div>
+        </div>
+
+        <!-- ADD ACTIVITY — submits to shared email flow -->
+        <button class="add-activity-btn" onclick="toggleActivityForm('${iso}')">
+          <span class="plus">＋</span> Suggest an activity
+        </button>
+        <div class="activity-form" id="af-${iso}">
+          <div class="activity-form-title">✦ Suggest for everyone · ${iso}</div>
+          <div class="af-field">
+            <label class="af-label">What's the activity?</label>
+            <input class="af-input" type="text" id="af-activity-${iso}" placeholder="e.g. Shilin Night Market" />
+          </div>
+          <div class="af-field">
+            <label class="af-label">What time?</label>
+            <input class="af-input" type="text" id="af-time-${iso}" placeholder="e.g. 7:00 PM" />
+          </div>
+          <div class="af-field">
+            <label class="af-label">Who's joining?</label>
+            <div class="af-checkboxes">
+              <label class="af-check-label">
+                <input type="checkbox" value="Linda" onchange="toggleCheck(this.closest('.af-check-label'), this.checked)" />
+                <span class="af-dot" style="background:var(--terra)"></span> Linda
+              </label>
+              <label class="af-check-label">
+                <input type="checkbox" value="Shumai" onchange="toggleCheck(this.closest('.af-check-label'), this.checked)" />
+                <span class="af-dot" style="background:var(--green-mid)"></span> Shumai
+              </label>
+              <label class="af-check-label">
+                <input type="checkbox" value="Benjamin" onchange="toggleCheck(this.closest('.af-check-label'), this.checked)" />
+                <span class="af-dot" style="background:#3B6EA5"></span> Benjamin
+              </label>
+              <label class="af-check-label">
+                <input type="checkbox" value="Weilong" onchange="toggleCheck(this.closest('.af-check-label'), this.checked)" />
+                <span class="af-dot" style="background:#6B4580"></span> Weilong
+              </label>
+            </div>
+          </div>
+          <div class="af-field">
+            <label class="af-label">Anyone else joining? <span style="font-weight:400;color:var(--text-faint)">(friends, relatives…)</span></label>
+            <input class="af-input" type="text" id="af-others-${iso}" placeholder="e.g. Aunt Mary, Uncle John" />
+          </div>
+          <div class="af-actions">
+            <button class="af-btn af-btn-cancel" onclick="toggleActivityForm('${iso}')">Cancel</button>
+            <button class="af-btn af-btn-submit" onclick="submitActivity('${iso}')">Send to itinerary ✦</button>
+          </div>
+          <div class="af-success" id="af-success-${iso}">✓ Sent! Linda will add it to the itinerary.
+            <br><button class="add-activity-btn" style="margin-top:0.6rem" onclick="resetActivityForm('${iso}')">+ Add another activity</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- /LIDO:DAY -->`;
+
+    container.appendChild(card);
+  }
+
+  // Auto-show journal photos when src is set
+  document.querySelectorAll('.photo-slot img').forEach(img => {
+    const src = img.getAttribute('src');
+    if (src && src.trim() !== '') {
+      const slot  = img.closest('.photo-slot');
+      const inner = slot && slot.querySelector('.photo-slot-inner');
+      img.style.display = 'block';
+      if (inner) inner.style.display = 'none';
+      img.onerror = () => {
+        img.style.display = 'none';
+        if (inner) inner.style.display = '';
+      };
+    }
+  });
+
+  // Hide empty-state notice when there are entries
+  const entries = document.getElementById('journal-entries');
+  const empty   = document.getElementById('journal-empty');
+  if (entries && empty && entries.children.length > 0) {
+    empty.style.display = 'none';
+  }
+})();
+</script>
+
+
+<script>
+// ════════════════════════════════════════════════════════════════
+//  LIDO BOOKINGS DATA
+//  This is the canonical source for what appears in day cards.
+//  Update this object whenever a new booking is added to Section 1.
+//
+//  field values: 'morning' | 'afternoon' | 'evening' | 'transport' | 'meals' | 'notes'
+//  type values:  'flight' | 'hotel-in' | 'hotel-night' | 'hotel-out' | 'tour' | 'transfer' | 'info'
+// ════════════════════════════════════════════════════════════════
+const BOOKINGS_DATA = {
+
+  '1': [ // Linda (Hsu Haolinglinda) — DGU8L5
+    // ── Flight out: YYZ → TPE, Nov 14 12:15 AM, arrives TPE ~5:35 AM Nov 15
+    { date: '2026-11-14', field: 'morning',   type: 'flight',   text: '✈ Departs Toronto YYZ · 12:15 AM · EVA Air BR035' },
+    { date: '2026-11-14', field: 'transport', type: 'flight',   text: '✈ YYZ → TPE · EVA Air BR035 · departs 12:15 AM · arrives Taipei approx. 5:35 AM (Nov 15)' },
+    { date: '2026-11-15', field: 'morning',   type: 'flight',   text: '✈ Arrives Taipei TPE · approx. 5:35 AM · EVA Air BR035' },
+    // ── Return: TPE → YYZ, Dec 12
+    { date: '2026-12-12', field: 'transport', type: 'flight',   text: '✈ TPE → YYZ · EVA Air BR035 return · booking DGU8L5' },
+    { date: '2026-12-12', field: 'notes',     type: 'flight',   text: '✈ Departure day — return flight to Toronto' },
+
+    // ── Hotel Gracery Taipei — KIYOKEN Twin (2 Single Beds) · Nov 15–21 · 6 nights
+    // Nov 15–18: HsuTev9xb194TwHO · CA$551.59 · Nov 18–21: HsuTev9xgk97TwHO · CA$641.28
+    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · KIYOKEN Twin · from 3:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+  ],
+
+  '2': [ // Shumai (Kao Shumai) — DGXF7X
+    // Shumai departs Nov 9 (before the itinerary range Nov 14–Dec 12)
+    // Shumai returns Dec 17 (after the itinerary range)
+    // Context note so her situation is visible when viewing her tab:
+    { date: '2026-11-14', field: 'notes', type: 'info', text: '📍 Shumai arrived in Taiwan on Nov 9 via EVA Air BR035 (DGXF7X) — already here!' },
+    // ── Hotel Gracery Taipei — Universal Room (Double, Queensize) — Shumai + Weilong
+    // Booking: HsuTev9xmq75TwHO  Nov 15–21  CA$1,112.15 (6 nights)
+    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · Universal Room (Queensize) · from 3:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+  ],
+
+  '3': [ // Benjamin (Benjaminhaozheong Hsu) — D5QV5G
+    // Flight out: YYZ → TPE, Nov 14 12:15 AM, arrives TPE 5:10 AM Nov 15
+    { date: '2026-11-14', field: 'morning',   type: 'flight', text: '✈ Departs Toronto YYZ · 12:15 AM · EVA Air BR035' },
+    { date: '2026-11-14', field: 'transport', type: 'flight', text: '✈ YYZ → TPE · EVA Air BR035 · departs 12:15 AM · arrives Taipei 5:10 AM (Nov 15) · Booking D5QV5G' },
+    { date: '2026-11-15', field: 'morning',   type: 'flight', text: '✈ Arrives Taipei TPE · 5:10 AM · EVA Air BR035' },
+    // ── Hotel Gracery Taipei — KIYOKEN Twin (2 Single Beds) · Nov 15–21 · 6 nights
+    // Nov 15–18: HsuTev9xb194TwHO · CA$551.59 · Nov 18–21: HsuTev9xgk97TwHO · CA$641.28
+    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · KIYOKEN Twin · from 3:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+  ],
+
+  '4': [ // Weilong (Weilong Hsu) — D5QV5G
+    // Same flight as Benjamin: YYZ → TPE, Nov 14 12:15 AM, arrives TPE 5:10 AM Nov 15
+    { date: '2026-11-14', field: 'morning',   type: 'flight', text: '✈ Departs Toronto YYZ · 12:15 AM · EVA Air BR035' },
+    { date: '2026-11-14', field: 'transport', type: 'flight', text: '✈ YYZ → TPE · EVA Air BR035 · departs 12:15 AM · arrives Taipei 5:10 AM (Nov 15) · Booking D5QV5G' },
+    { date: '2026-11-15', field: 'morning',   type: 'flight', text: '✈ Arrives Taipei TPE · 5:10 AM · EVA Air BR035' },
+    // ── Hotel Gracery Taipei — Universal Room (Double, Queensize) — Weilong + Shumai
+    // Booking: HsuTev9xmq75TwHO  Nov 15–21  CA$1,112.15 (6 nights)
+    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · Universal Room (Queensize) · from 3:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+  ],
+};
+
+// ════════════════════════════════════════════════════════════════
+//  TRAVELLER TAB FILTER
+// ════════════════════════════════════════════════════════════════
+
+function filterTraveller(btn, filter) {
+  // 1 — update active tab style
+  document.querySelectorAll('.t-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  // 2 — filter Section 1 booking cards
+  const grid     = document.querySelector('.booking-grid');
+  const cards    = grid.querySelectorAll('.booking-card');
+  const comingSoon = document.getElementById('booking-coming-soon');
+
+  comingSoon.style.display = 'none';
+  cards.forEach(card => {
+    const t = card.getAttribute('data-traveller') || '';
+    const travellers = t.split(',').map(s => s.trim());
+    card.style.display = (travellers.includes(filter) || travellers.includes('shared')) ? '' : 'none';
+  });
+
+  // 3 — populate day cards from booking data
+  populateDayCards(filter);
+}
+
+// Auto-load Linda (traveller 1) on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const lindaBtn = document.querySelector('.t-tab');
+  filterTraveller(lindaBtn, '1');
+
+  // Load all saved private notes from localStorage
+  document.querySelectorAll('.private-note-input').forEach(ta => {
+    const date = ta.closest('.day-card')?.getAttribute('data-date');
+    if (!date) return;
+    const saved = localStorage.getItem('private-note-' + date);
+    if (saved) ta.value = saved;
+  });
+});
+
+// ── PRIVATE NOTES ────────────────────────────────────────────────
+function onPrivateNoteInput(ta, date) {
+  const actions = document.getElementById('pna-' + date);
+  if (actions) actions.classList.add('visible');
+}
+
+function savePrivateNote(btn, date) {
+  const ta = btn.closest('.private-note-section').querySelector('.private-note-input');
+  localStorage.setItem('private-note-' + date, ta.value);
+  const actions = document.getElementById('pna-' + date);
+  if (actions) actions.classList.remove('visible');
+}
+
+function cancelPrivateNote(btn, date) {
+  const ta = btn.closest('.private-note-section').querySelector('.private-note-input');
+  const saved = localStorage.getItem('private-note-' + date) || '';
+  ta.value = saved;
+  const actions = document.getElementById('pna-' + date);
+  if (actions) actions.classList.remove('visible');
+}
+
+// ── ACTIVITY FORM ─────────────────────────────────────────────────
+function resetActivityForm(date) {
+  // Clear all fields
+  const act = document.getElementById('af-activity-' + date);
+  const tim = document.getElementById('af-time-' + date);
+  const oth = document.getElementById('af-others-' + date);
+  if (act) act.value = '';
+  if (tim) tim.value = '';
+  if (oth) oth.value = '';
+  // Uncheck all checkboxes
+  const form = document.getElementById('af-' + date);
+  if (form) {
+    form.querySelectorAll('.af-check-label').forEach(l => {
+      l.classList.remove('checked');
+      const cb = l.querySelector('input');
+      if (cb) cb.checked = false;
+    });
+  }
+  // Hide success, show form fields
+  const success = document.getElementById('af-success-' + date);
+  if (success) success.classList.remove('show');
+  // Scroll to activity field
+  if (act) act.focus();
+}
+
+function toggleActivityForm(date) {
+  const form = document.getElementById('af-' + date);
+  if (!form) return;
+  form.classList.toggle('open');
+  // reset success message when reopening
+  const success = document.getElementById('af-success-' + date);
+  if (success) success.classList.remove('show');
+}
+
+function toggleCheck(label, checked) {
+  label.classList.toggle('checked', checked);
+}
+
+function submitActivity(date) {
+  const activity = document.getElementById('af-activity-' + date)?.value.trim();
+  const time     = document.getElementById('af-time-' + date)?.value.trim();
+  const others   = document.getElementById('af-others-' + date)?.value.trim();
+  const form     = document.getElementById('af-' + date);
+  const checked  = [...form.querySelectorAll('.af-check-label.checked')]
+                     .map(l => l.querySelector('input')?.value).filter(Boolean);
+
+  if (!activity) {
+    document.getElementById('af-activity-' + date)?.focus();
+    return;
+  }
+
+  const members = checked.length ? checked.join(', ') : 'Everyone';
+  const allWho  = [members, others].filter(Boolean).join(', ');
+  const subject = encodeURIComponent('Taiwan 2026 - Linda | Activity Update');
+  const body    = encodeURIComponent(
+    'Trip: Taiwan 2026\n' +
+    'Date: ' + date + '\n' +
+    'Activity: ' + activity + '\n' +
+    'Time: ' + (time || 'TBD') + '\n' +
+    'Who: ' + allWho
+  );
+
+  // Open email client — works on mobile too
+  window.location.href = 'mailto:lindahsu817@gmail.com?subject=' + subject + '&body=' + body;
+
+  // Show success message and reset form
+  setTimeout(() => {
+    const success = document.getElementById('af-success-' + date);
+    if (success) success.classList.add('show');
+    document.getElementById('af-activity-' + date).value = '';
+    document.getElementById('af-time-' + date).value = '';
+    const othersEl = document.getElementById('af-others-' + date);
+    if (othersEl) othersEl.value = '';
+    form.querySelectorAll('.af-check-label').forEach(l => {
+      l.classList.remove('checked');
+      const cb = l.querySelector('input');
+      if (cb) cb.checked = false;
+    });
+  }, 500);
+}
+
+// ════════════════════════════════════════════════════════════════
+//  SMART DAY CARD AUTO-POPULATION
+//  Reads BOOKINGS_DATA and injects confirmed booking events
+//  directly into the relevant day cards.
+// ════════════════════════════════════════════════════════════════
+function populateDayCards(filter) {
+  // Always clear previously injected events first
+  document.querySelectorAll('.booking-event').forEach(el => el.remove());
+
+  // Don't inject for 'all', placeholder travellers, or unknown filters
+  const events = BOOKINGS_DATA[filter];
+  if (!events || !events.length) return;
+
+  events.forEach(evt => {
+    // Find the day card for this date
+    const card = document.querySelector(`.day-card[data-date="${evt.date}"]`);
+    if (!card) return; // date outside the current itinerary range — skip silently
+
+    // Find the target field inside the card
+    const field = card.querySelector(`[data-day-field="${evt.field}"]`);
+    if (!field) return;
+
+    // Build the chip element
+    const chip = document.createElement('div');
+    chip.className = `booking-event booking-event--${evt.type}`;
+    if (evt.mapUrl) {
+      chip.innerHTML = evt.text + ` <a href="${evt.mapUrl}" target="_blank" style="color:inherit;font-weight:700;text-decoration:underline;white-space:nowrap;">📍 Map</a>`;
+    } else {
+      chip.textContent = evt.text;
+    }
+
+    // Insert before the placeholder content (inside the same parent)
+    field.insertAdjacentElement('beforebegin', chip);
+
+    // Auto-open the card so the event is immediately visible
+    card.classList.add('open');
+  });
+}
+</script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
