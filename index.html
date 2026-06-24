@@ -100,7 +100,7 @@
     /* ── TRAVELLER BAR ──────────────────────────────────────────── */
     .traveller-bar {
       position: sticky;
-      top: 58px; /* sits flush below the 58px nav */
+      top: 58px;
       z-index: 90;
       background: var(--cream-warm);
       border-bottom: 1px solid var(--border);
@@ -108,50 +108,38 @@
     .traveller-bar-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 2rem;
-      height: 46px;
+      padding: 0.6rem 1rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .traveller-bar-label { display: none; }
+    .t-tab {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .traveller-bar-inner::-webkit-scrollbar { display: none; }
-    .traveller-bar-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-right: 0.5rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .t-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.3rem 0.85rem;
-      border-radius: 20px;
-      font-size: 0.77rem;
-      font-weight: 500;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.65rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
       color: var(--text-soft);
-      background: transparent;
-      border: 1px solid transparent;
+      background: var(--cream);
+      border: 1.5px solid var(--border);
       cursor: pointer;
       transition: all 0.16s;
       white-space: nowrap;
-      flex-shrink: 0;
       user-select: none;
       font-family: 'Inter', sans-serif;
+      min-height: 44px;
     }
-    .t-tab:hover { background: var(--cream-dark); color: var(--text-mid); }
+    .t-tab:active { transform: scale(0.97); }
     .t-tab.active { background: var(--terra); color: white; border-color: var(--terra); }
-    .t-tab.placeholder { border: 1px dashed var(--border); color: var(--text-faint); }
-    .t-tab.placeholder:hover { background: var(--cream); color: var(--text-soft); }
-    .t-tab .t-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .t-tab .t-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .t-tab.active .t-dot { background: rgba(255,255,255,0.65) !important; }
-    .t-sep { width: 1px; height: 18px; background: var(--border); margin: 0 0.25rem; flex-shrink: 0; }
+    .t-sep { display: none; }
+    /* Hide the old type dropdown entirely */
+    .t-type-wrap { display: none; }
 
     /* Type filter dropdown */
     .t-type-wrap { position: relative; flex-shrink: 0; }
@@ -1030,27 +1018,12 @@
 <!-- TRAVELLER TABS — filters Section 1 booking cards -->
 <div class="traveller-bar" id="traveller-bar">
   <div class="traveller-bar-inner">
-    <span class="traveller-bar-label">Travellers</span>
-    <div class="t-type-wrap" id="t-type-wrap">
-      <button class="t-tab t-type-btn active" id="t-type-btn" onclick="toggleTypeMenu(event)">
-        All <span class="t-arrow">▾</span>
-      </button>
-      <div class="t-type-menu" id="t-type-menu">
-        <button class="active" onclick="filterByType('all',this)">All Bookings</button>
-        <button onclick="filterByType('flight',this)">✈ Flight</button>
-        <button onclick="filterByType('hotel',this)">🏨 Accommodation</button>
-        <button onclick="filterByType('transfer',this)">🚌 Transportation</button>
-        <button onclick="filterByType('other',this)">📋 Other</button>
-      </div>
-    </div>
-    <div class="t-sep"></div>
-    <button class="t-tab" onclick="filterTraveller(this,'1')">
+    <button class="t-tab active" onclick="filterTraveller(this,'1')">
       <span class="t-dot" style="background:var(--terra)"></span> Linda
     </button>
     <button class="t-tab" onclick="filterTraveller(this,'2')">
       <span class="t-dot" style="background:var(--green-mid)"></span> Shumai
     </button>
-    <div class="t-sep"></div>
     <button class="t-tab" onclick="filterTraveller(this,'3')">
       <span class="t-dot" style="background:#3B6EA5"></span> Benjamin
     </button>
@@ -1592,7 +1565,9 @@
             <div class="bfield full">
               <div class="bfield-label">Address</div>
               <!-- LIDO:FIELD name="address" booking="hotel-1" -->
-              <div class="bfield-value" data-booking="hotel-1" data-field="address">3F, No. 89, Sec. 2, Zhongxiao E. Rd., Zhongzheng District, Taipei 100013</div>
+              <div class="bfield-value" data-booking="hotel-1" data-field="address">
+                <a href="https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei" target="_blank" style="color:var(--terra);text-decoration:none;font-weight:500;">📍 3F, No. 89, Sec. 2, Zhongxiao E. Rd., Zhongzheng District, Taipei 100013</a>
+              </div>
               <!-- /LIDO:FIELD -->
             </div>
             <div class="bfield">
@@ -1670,6 +1645,14 @@
               <div class="bfield-label">Property</div>
               <!-- LIDO:FIELD name="property_name" booking="hotel-2" -->
               <div class="bfield-value" data-booking="hotel-2" data-field="property_name">Hotel Gracery Taipei</div>
+              <!-- /LIDO:FIELD -->
+            </div>
+            <div class="bfield full">
+              <div class="bfield-label">Address</div>
+              <!-- LIDO:FIELD name="address" booking="hotel-2" -->
+              <div class="bfield-value" data-booking="hotel-2" data-field="address">
+                <a href="https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei" target="_blank" style="color:var(--terra);text-decoration:none;font-weight:500;">📍 3F, No. 89, Sec. 2, Zhongxiao E. Rd., Zhongzheng District, Taipei 100013</a>
+              </div>
               <!-- /LIDO:FIELD -->
             </div>
             <div class="bfield">
@@ -1984,13 +1967,13 @@ const BOOKINGS_DATA = {
 
     // ── Hotel Gracery Taipei — KIYOKEN Twin (2 Single Beds) · Nov 15–21 · 6 nights
     // Nov 15–18: HsuTev9xb194TwHO · CA$551.59 · Nov 18–21: HsuTev9xgk97TwHO · CA$641.28
-    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · KIYOKEN Twin (2 Singles) · from 3:00 PM · HsuTev9xb194TwHO' },
-    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 2' },
-    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 3' },
-    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 4 · ref changes to HsuTev9xgk97TwHO' },
-    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 5' },
-    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 6' },
-    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM · CA$1,192.87 total' },
+    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · KIYOKEN Twin · from 3:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
   ],
 
   '2': [ // Shumai (Kao Shumai) — DGXF7X
@@ -2000,13 +1983,13 @@ const BOOKINGS_DATA = {
     { date: '2026-11-14', field: 'notes', type: 'info', text: '📍 Shumai arrived in Taiwan on Nov 9 via EVA Air BR035 (DGXF7X) — already here!' },
     // ── Hotel Gracery Taipei — Universal Room (Double, Queensize) — Shumai + Weilong
     // Booking: HsuTev9xmq75TwHO  Nov 15–21  CA$1,112.15 (6 nights)
-    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · Universal Room (Queensize) · from 3:00 PM · HsuTev9xmq75TwHO' },
-    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2' },
-    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3' },
-    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4' },
-    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5' },
-    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6' },
-    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM · CA$1,112.15 total' },
+    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · Universal Room (Queensize) · from 3:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
   ],
 
   '3': [ // Benjamin (Benjaminhaozheong Hsu) — D5QV5G
@@ -2016,13 +1999,13 @@ const BOOKINGS_DATA = {
     { date: '2026-11-15', field: 'morning',   type: 'flight', text: '✈ Arrives Taipei TPE · 5:10 AM · EVA Air BR035' },
     // ── Hotel Gracery Taipei — KIYOKEN Twin (2 Single Beds) · Nov 15–21 · 6 nights
     // Nov 15–18: HsuTev9xb194TwHO · CA$551.59 · Nov 18–21: HsuTev9xgk97TwHO · CA$641.28
-    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · KIYOKEN Twin (2 Singles) · from 3:00 PM · HsuTev9xb194TwHO' },
-    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 2' },
-    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 3' },
-    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 4 · ref changes to HsuTev9xgk97TwHO' },
-    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 5' },
-    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · KIYOKEN Twin · Night 6' },
-    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM · CA$1,192.87 total' },
+    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · KIYOKEN Twin · from 3:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
   ],
 
   '4': [ // Weilong (Weilong Hsu) — D5QV5G
@@ -2032,86 +2015,24 @@ const BOOKINGS_DATA = {
     { date: '2026-11-15', field: 'morning',   type: 'flight', text: '✈ Arrives Taipei TPE · 5:10 AM · EVA Air BR035' },
     // ── Hotel Gracery Taipei — Universal Room (Double, Queensize) — Weilong + Shumai
     // Booking: HsuTev9xmq75TwHO  Nov 15–21  CA$1,112.15 (6 nights)
-    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · Universal Room (Queensize) · from 3:00 PM · HsuTev9xmq75TwHO' },
-    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2' },
-    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3' },
-    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4' },
-    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5' },
-    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6' },
-    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM' },
+    { date: '2026-11-15', field: 'afternoon', type: 'hotel-in',    text: '🏨 Check in · Hotel Gracery Taipei · Universal Room (Queensize) · from 3:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-16', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 2', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-17', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 3', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-18', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 4', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-19', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 5', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-20', field: 'notes',     type: 'hotel-night', text: '🏨 Hotel Gracery Taipei · Night 6', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
+    { date: '2026-11-21', field: 'morning',   type: 'hotel-out',   text: '🏨 Check out · Hotel Gracery Taipei · by 12:00 PM', mapUrl: 'https://maps.google.com/?q=Hotel+Gracery+Taipei,+No.+89,+Sec.+2,+Zhongxiao+E.+Rd.,+Zhongzheng+District,+Taipei' },
   ],
 };
 
 // ════════════════════════════════════════════════════════════════
 //  TRAVELLER TAB FILTER
 // ════════════════════════════════════════════════════════════════
-// ── TYPE DROPDOWN ────────────────────────────────────────────────
-const TYPE_LABELS = {
-  all:      'All',
-  flight:   '✈ Flight',
-  hotel:    '🏨 Accommodation',
-  transfer: '🚌 Transportation',
-  other:    '📋 Other',
-};
-
-function toggleTypeMenu(e) {
-  e.stopPropagation();
-  const menu = document.getElementById('t-type-menu');
-  if (!menu.classList.contains('open')) {
-    const rect = document.getElementById('t-type-btn').getBoundingClientRect();
-    menu.style.top  = (rect.bottom + 6) + 'px';
-    menu.style.left = rect.left + 'px';
-  }
-  menu.classList.toggle('open');
-}
-
-function filterByType(type, btn) {
-  // close menu
-  document.getElementById('t-type-menu').classList.remove('open');
-  // update button label
-  document.getElementById('t-type-btn').innerHTML = (TYPE_LABELS[type] || 'All') + ' <span class="t-arrow">▾</span>';
-  // highlight active menu item
-  document.querySelectorAll('.t-type-menu button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  // mark the dropdown button as active, deactivate traveller tabs
-  document.querySelectorAll('.t-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('t-type-btn').classList.add('active');
-
-  const grid = document.querySelector('.booking-grid');
-  const cards = grid.querySelectorAll('.booking-card');
-  document.getElementById('booking-coming-soon').style.display = 'none';
-
-  cards.forEach(card => {
-    if (type === 'all') {
-      card.style.display = '';
-    } else {
-      const ct = card.getAttribute('data-booking-type') || '';
-      let show = false;
-      if (type === 'flight'   && ct === 'flight') show = true;
-      if (type === 'hotel'    && ct === 'hotel')  show = true;
-      if (type === 'transfer' && (ct === 'transfer' || ct === 'transport')) show = true;
-      if (type === 'other'    && !['flight','hotel','transfer','transport'].includes(ct) && ct !== '') show = true;
-      card.style.display = show ? '' : 'none';
-    }
-  });
-
-  populateDayCards('all');
-}
-
-// close dropdown when clicking outside
-document.addEventListener('click', () => {
-  document.getElementById('t-type-menu')?.classList.remove('open');
-});
 
 function filterTraveller(btn, filter) {
-  // reset type dropdown to "All"
-  document.getElementById('t-type-btn').innerHTML = 'All <span class="t-arrow">▾</span>';
-  document.querySelectorAll('.t-type-menu button').forEach(b => b.classList.remove('active'));
-  document.querySelector('.t-type-menu button:first-child').classList.add('active');
-
   // 1 — update active tab style
   document.querySelectorAll('.t-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
 
   // 2 — filter Section 1 booking cards
   const grid     = document.querySelector('.booking-grid');
@@ -2120,21 +2041,20 @@ function filterTraveller(btn, filter) {
 
   comingSoon.style.display = 'none';
   cards.forEach(card => {
-    if (filter === 'all') {
-      card.style.display = '';
-    } else {
-      const t = card.getAttribute('data-traveller') || '';
-      const travellers = t.split(',').map(s => s.trim());
-      card.style.display = (travellers.includes(filter) || travellers.includes('shared')) ? '' : 'none';
-    }
+    const t = card.getAttribute('data-traveller') || '';
+    const travellers = t.split(',').map(s => s.trim());
+    card.style.display = (travellers.includes(filter) || travellers.includes('shared')) ? '' : 'none';
   });
 
   // 3 — populate day cards from booking data
   populateDayCards(filter);
-
-  // 4 — scroll to trip info
-  document.getElementById('tripinfo').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+// Auto-load Linda (traveller 1) on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const lindaBtn = document.querySelector('.t-tab');
+  filterTraveller(lindaBtn, '1');
+});
 
 // ════════════════════════════════════════════════════════════════
 //  SMART DAY CARD AUTO-POPULATION
@@ -2161,7 +2081,11 @@ function populateDayCards(filter) {
     // Build the chip element
     const chip = document.createElement('div');
     chip.className = `booking-event booking-event--${evt.type}`;
-    chip.textContent = evt.text;
+    if (evt.mapUrl) {
+      chip.innerHTML = evt.text + ` <a href="${evt.mapUrl}" target="_blank" style="color:inherit;font-weight:700;text-decoration:underline;white-space:nowrap;">📍 Map</a>`;
+    } else {
+      chip.textContent = evt.text;
+    }
 
     // Insert before the placeholder content (inside the same parent)
     field.insertAdjacentElement('beforebegin', chip);
